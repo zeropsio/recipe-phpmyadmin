@@ -1,0 +1,8 @@
+# Service hostname to which the application will be deployed.
+phpmyadmin:
+  build:
+    build:
+    deploy: [./public]
+  run:
+    # Folder name used as the root of the publicly accessible web server content.
+    documentRoot: public
