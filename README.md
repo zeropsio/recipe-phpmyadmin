@@ -9,6 +9,7 @@ The concept of pre-prepared skeletons demonstrates the way how to set up and use
 ## Zerops import syntax
 
 ```yaml
+#yamlPreprocessor=on
 services:
   # Service will be accessible through zcli VPN under: http://phpmyadmin
 - hostname: phpmyadmin
@@ -26,6 +27,8 @@ services:
     # Here, the Zerops MariaDB service's chosen hostname is "mariadb".
     # Change it if you need to use a different one.
     DATABASE_HOSTNAME: mariadb
+    # Used by phpMyAdmin for cookie based authentication to encrypt the cookie.
+    SECRET_TOKEN: <@generateRandomString(<32>)>
 ```
 
 Copy & paste the import snippet above into the dialog of **Import service** functionality.
