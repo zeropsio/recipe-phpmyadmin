@@ -17,6 +17,9 @@ phpmyadmin:
     # Updating the hostname in the "config.inc.php" file to which phpMyAdmin is allowed to connect
     # using the environment variable "DATABASE_HOSTNAME" which is preset by the Zerops import statements.
     - sed -i "s/\['host'\] = 'localhost';/\['host'\] = '$DATABASE_HOSTNAME';/g" ./public/phpMyAdmin-5.2.1-english/config.inc.php
+    # Moving the entire content of the current directory "phpMyAdmin-5.2.1-english" to the "public" parent directory,
+    # then switching back to the "public" directory and removing unnecessary directory "phpMyAdmin-5.2.1-english".
+    - mv * ../; cd ..; rm -r phpMyAdmin-5.2.1-english
     deploy: [./public]
   run:
     # Folder name used as the root of the publicly accessible web server content.
