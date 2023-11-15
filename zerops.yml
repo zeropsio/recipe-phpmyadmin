@@ -8,19 +8,19 @@ phpmyadmin:
     - unzip phpMyAdmin-5.2.1-english.zip -d public
     # Deleting the previously downloaded file "phpMyAdmin-5.2.1-english.zip".
     - rm phpMyAdmin-5.2.1-english.zip
-    # Switching to the directory "public",
-    # then switching to the subdirectory "phpMyAdmin-5.2.1-english", coming from the unzipped content,
-    # then renaming the filename "config.sample.inc.php" to "config.inc.php".
-    - cd public; cd phpMyAdmin-5.2.1-english; mv config.sample.inc.php config.inc.php
-    # Updating blowfish secret used by phpMyAdmin for cookie based authentication to encrypt the cookie.
+    # Renaming the filename "config.sample.inc.php" to "config.inc.php".
+    - mv ./public/phpMyAdmin-5.2.1-english/config.sample.inc.php ./public/phpMyAdmin-5.2.1-english/config.inc.php
+    # Updating blowfish secret used by phpMyAdmin for cookie based authentication to encrypt the cookie
+    # using the environment variable "SECRET_TOKEN" which is preset by the Zerops import statements.
     - sed -i "s/\['blowfish_secret'\] = '';/\['blowfish_secret'\] = '$SECRET_TOKEN';/g" ./public/phpMyAdmin-5.2.1-english/config.inc.php
     # Updating the hostname in the "config.inc.php" file to which phpMyAdmin is allowed to connect
     # using the environment variable "DATABASE_HOSTNAME" which is preset by the Zerops import statements.
     - sed -i "s/\['host'\] = 'localhost';/\['host'\] = '$DATABASE_HOSTNAME';/g" ./public/phpMyAdmin-5.2.1-english/config.inc.php
-    # Moving the entire content of the current directory "phpMyAdmin-5.2.1-english" to the "public" parent directory,
-    # then switching back to the "public" directory and removing unnecessary directory "phpMyAdmin-5.2.1-english".
-    # - mv * ../; cd ..; ls -l
-    # rm -r phpMyAdmin-5.2.1-english
+    # Switching to the directory "public", then switching to the subdirectory "phpMyAdmin-5.2.1-english", coming from the unzipped
+    # content, then moving the entire content of the current directory "phpMyAdmin-5.2.1-english" to the "public" parent directory.
+    - cd public; cd phpMyAdmin-5.2.1-english; mv * ../;
+    # Removing unnecessary directory "phpMyAdmin-5.2.1-english".
+    - rm -r ./public/phpMyAdmin-5.2.1-english
     deploy: [./public]
   run:
     # Folder name used as the root of the publicly accessible web server content.
