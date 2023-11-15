@@ -2,8 +2,19 @@
 phpmyadmin:
   build:
     build:
-    # Downloading of the phpMyAdmin-5.2.1.zip.
+    # Downloading of the "phpMyAdmin-5.2.1-english.zip" file.
     - curl https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-english.zip -o phpMyAdmin-5.2.1-english.zip
+    # The content is unzipped into the local "public" directory.
+    - unzip phpMyAdmin-5.2.1-english.zip -d public
+    # Deleting the previously downloaded file "phpMyAdmin-5.2.1-english.zip".
+    - rm phpMyAdmin-5.2.1-english.zip
+    # Switching to the directory "public",
+    # then switching to the subdirectory "phpMyAdmin-5.2.1-english", coming from the unzipped content,
+    # then renaming the filename "config.sample.inc.php" to "config.inc.php".
+    - cd public; cd phpMyAdmin-5.2.1-english; mv config.sample.inc.php config.inc.php
+    # Updating the hostname in the "config.inc.php" file to which phpMyAdmin is allowed to connect
+    # using the environment variable "DATABASE_HOSTNAME" which is preset by the Zerops import statements.
+    - sed -i "s/\$cfg['Servers'][$i]['host'] = 'localhost';/\$cfg['Servers'][$i]['host'] = '$DATABASE_HOSTNAME';/g" ./public/phpMyAdmin-5.2.1-english/config.inc.php
     deploy: [./public]
   run:
     # Folder name used as the root of the publicly accessible web server content.
