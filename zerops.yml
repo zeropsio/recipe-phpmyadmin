@@ -2,6 +2,8 @@
 phpmyadmin:
   build:
     build:
+    # Downloading of the phpMyAdmin-5.2.1.zip.
+    - curl https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-english.zip -o phpMyAdmin-5.2.1-english.zip
     deploy: [./public]
   run:
     # Folder name used as the root of the publicly accessible web server content.
