@@ -19,7 +19,7 @@ phpmyadmin:
     - sed -i "s/\['host'\] = 'localhost';/\['host'\] = '$DATABASE_HOSTNAME';/g" ./public/phpMyAdmin-5.2.1-english/config.inc.php
     # Moving the entire content of the current directory "phpMyAdmin-5.2.1-english" to the "public" parent directory,
     # then switching back to the "public" directory and removing unnecessary directory "phpMyAdmin-5.2.1-english".
-    - mv * ../; cd ..; ls -l
+    # - mv * ../; cd ..; ls -l
     # rm -r phpMyAdmin-5.2.1-english
     deploy: [./public]
   run:
