@@ -51,7 +51,7 @@ Copy & paste the import snippet above into the dialog of **Import service** func
 ![Recipe](./images/Zerops-Service-Subdomain-URL.png "Subdomain Access")
 ![phpMyAdmin](./images/Welcome-Page-phpMyAdmin.png "Welcome page of phpMyAdmin")
 
-7. As the **Username** enter the [chosen hostname](https://docs.zerops.io/documentation/services/databases/mariadb.html#hostname-and-ports) of the Zerops MariaDB service you want to access. The ==**mariadb**== value was mentioned above and shown in the import syntax.
+7. As the **Username** enter the [chosen hostname](https://docs.zerops.io/documentation/services/databases/mariadb.html#hostname-and-ports) of the Zerops MariaDB service you want to access. The **mariadb** value was mentioned above and shown in the import syntax.
 
 8. The user password can be taken from the **Database access details** section of the Zerops MariaDB service.
 
